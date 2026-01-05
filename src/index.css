@@ -1,0 +1,282 @@
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep space dark theme */
+    --background: 230 25% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 230 25% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 230 25% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    /* Electric cyan primary */
+    --primary: 185 100% 50%;
+    --primary-foreground: 230 25% 5%;
+
+    /* Violet secondary */
+    --secondary: 270 80% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted dark surfaces */
+    --muted: 230 20% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent - bright cyan glow */
+    --accent: 185 100% 60%;
+    --accent-foreground: 230 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 15%;
+    --ring: 185 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradient variables */
+    --gradient-primary: linear-gradient(135deg, hsl(185 100% 50%) 0%, hsl(270 80% 60%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(230 25% 12% / 0.8) 0%, hsl(230 25% 8% / 0.6) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(230 25% 5%) 0%, hsl(230 30% 8%) 50%, hsl(270 30% 10%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(230 25% 12% / 0.9) 0%, hsl(230 25% 8% / 0.7) 100%);
+
+    /* Glow effects */
+    --glow-primary: 0 0 40px hsl(185 100% 50% / 0.3);
+    --glow-secondary: 0 0 40px hsl(270 80% 60% / 0.3);
+    --glow-intense: 0 0 80px hsl(185 100% 50% / 0.4), 0 0 120px hsl(270 80% 60% / 0.2);
+
+    /* Typography */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Space Grotesk', sans-serif;
+
+    /* Sidebar - matching dark theme */
+    --sidebar-background: 230 25% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 230 25% 5%;
+    --sidebar-accent: 230 20% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 230 20% 15%;
+    --sidebar-ring: 185 100% 50%;
+  }
+}
+
+/* Glass Select Fix */
+.glass-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: hsl(var(--muted) / 0.5);
+  color: hsl(var(--foreground));
+
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 0.75rem;
+
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  height: 2.5rem;
+
+  backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-select:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.25);
+}
+
+.glass-select option {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl border border-border/50;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Neon glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .glow-intense {
+    box-shadow: var(--glow-intense);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Code grid background pattern */
+  .code-grid {
+    background-image: 
+      linear-gradient(hsl(230 20% 15% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(230 20% 15% / 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(hsl(185 100% 50% / 0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Circuit pattern overlay */
+  .circuit-pattern {
+    background-image: 
+      linear-gradient(90deg, transparent 49.5%, hsl(185 100% 50% / 0.05) 49.5%, hsl(185 100% 50% / 0.05) 50.5%, transparent 50.5%),
+      linear-gradient(transparent 49.5%, hsl(185 100% 50% / 0.05) 49.5%, hsl(185 100% 50% / 0.05) 50.5%, transparent 50.5%);
+    background-size: 100px 100px;
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl;
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Hover scale with glow */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply scale-105;
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300;
+    background: var(--gradient-primary);
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-12 md:py-20;
+  }
+
+  /* Container with max width */
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Neon text glow */
+  .neon-text {
+    text-shadow: 
+      0 0 10px hsl(185 100% 50% / 0.5),
+      0 0 20px hsl(185 100% 50% / 0.3),
+      0 0 40px hsl(185 100% 50% / 0.2);
+  }
+
+  /* Timeline connector */
+  .timeline-line {
+    @apply absolute left-6 top-12 bottom-0 w-px;
+    background: linear-gradient(180deg, hsl(185 100% 50% / 0.5) 0%, hsl(270 80% 60% / 0.5) 50%, transparent 100%);
+  }
+
+  /* Skill bar animation */
+  .skill-bar {
+    @apply h-2 rounded-full overflow-hidden;
+    background: hsl(230 20% 15%);
+  }
+
+  .skill-bar-fill {
+    @apply h-full rounded-full;
+    background: var(--gradient-primary);
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(230 25% 5%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(230 20% 20%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(185 100% 50% / 0.5);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(185 100% 50% / 0.3);
+    color: hsl(210 40% 98%);
+  }
+}
