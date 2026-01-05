@@ -9,6 +9,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import NetworkBackground from '@/components/NetworkBackground';
+import ChatWidget from '@/components/ChatWidget';
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <ServicesSection />
       <ContactSection />
       <Footer />
+      <ChatWidget />
     </main>
   );
 };
